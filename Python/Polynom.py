@@ -1,4 +1,3 @@
-#projecteuler 31
 import time
 start=time.time()
 
