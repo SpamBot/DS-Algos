@@ -1,10 +1,8 @@
 #include<stdio.h>
 #include<string.h>
 
-#define abs(x) ((x)>=0) ? (x):-(x)
-#define print(x) printf("%d", x)
 
-
+define abs(x) ((x)>=0) ? (x):-(x)
 int btod(char *s, int d){
     int n=strlen(s);
     if(n>0){
