@@ -3,7 +3,7 @@
 #define abs(x) ((x)>=0) ? (x):-(x)
 #define print(x) printf("%d", x)
 
-void sis(int n, int b){
+void dtoa(int n, int b){
     int t=abs(n), a[32], f=0;
     while(t>0){a[f]=t%b; f++; t/=b;}
     if(n<0)printf("-");
@@ -17,5 +17,5 @@ void sis(int n, int b){
 int main(){
     int n, b;
     scanf("%d %d", &n, &b);
-    sis(n, b);
+    dtoa(n, b);
 }
