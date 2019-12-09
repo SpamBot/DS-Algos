@@ -13,4 +13,10 @@ Functions:
 - Stone sort
 - Merge sort
 - Quicksort
-    
+
+Converters:
+- Binary to decimal
+- Binary to hexadecimal
+- Binary to octal
+- Decimal to any between base between 2 and 36 inclusive (non/recursive)
+- Octal to binary
