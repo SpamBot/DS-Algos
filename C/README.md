@@ -15,8 +15,9 @@ Functions:
 - Quicksort
 
 Converters:
+- Any base between 2 and 9 (inclusive) to decimal
 - Binary to decimal
 - Binary to hexadecimal
 - Binary to octal
-- Decimal to any between base between 2 and 36 inclusive (non/recursive)
+- Decimal to any base between 2 and 36 inclusive (non/recursive)
 - Octal to binary
