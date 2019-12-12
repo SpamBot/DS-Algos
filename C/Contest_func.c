@@ -86,6 +86,17 @@ int fib(int n){
     }
     return a;
 }
+//is n a power of t? returns 1 if YES
+int ispow(int n, int t){
+    int out=0;
+    if(t>1){
+        if(n==1)out=1;
+        else if(n==0)out=0;
+        else if(n%t==0)out=ispow(n/t, t);
+    }
+    else if(t==1 && n==1)out=1;
+    return out;
+}
 //sum of digits #1
 int dsum(int n){
     char s[12];
