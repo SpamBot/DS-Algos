@@ -9,6 +9,7 @@ Functions:
 - Eratosphen sieve
 - Hyper-primality test
 - n-th Fibonacci num
+- Power test
 - Sum of digits
 - Stone sort
 - Merge sort
