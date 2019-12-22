@@ -97,6 +97,16 @@ int ispow(int n, int t){
     else if(t==1 && n==1)out=1;
     return out;
 }
+//returns rat.fraction approximation for a square root; best used with long arithmetics
+void newton(unsigned long a, unsigned long x, unsigned long y, int n){
+    long num=x*x+a*y*y, den=2*x*y;//n-max num of iterations
+    if(n>=0 && num>0 && den>0){
+        long hcf=nod(num, den);
+        num/=hcf; den/=hcf;
+        newton(a, num, den, n-1);
+    }
+    else printf("\nsqrt(%lu)=%lu/%lu=%lf", a, x, y, (float)x/y);
+}
 //sum of digits #1
 int dsum(int n){
     char s[12];
