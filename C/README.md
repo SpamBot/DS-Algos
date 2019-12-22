@@ -10,6 +10,7 @@ Functions:
 - Hyper-primality test
 - n-th Fibonacci num
 - Power test
+- Square root approximation via Newton method
 - Sum of digits
 - Stone sort
 - Merge sort
