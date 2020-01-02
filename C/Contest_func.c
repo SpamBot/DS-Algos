@@ -3,26 +3,26 @@
 #define max(a, b) ((a)>=(b)) ? (a):(b)
  //scanf("%[^\n]", s);
 
-struct stack{
+typedef struct stack{
     int a[100], p;
-};
-void push(int n, struct stack *s){(*s).a[s->p]=n; s->p++;}
-int pop(struct stack *s){if((*s).p>0){s->p--; return s->a[s->p];}}
-int peek(struct stack *s){if(s->p>0)return s->a[s->p-1];}
-int size(struct stack *s){return s->p;}
-void empty(struct stack *s){s->p=0;}
+} stack;
+void push(int n, stack *s){(*s).a[s->p]=n; s->p++;}
+int pop(stack *s){if((*s).p>0){s->p--; return s->a[s->p];}}
+int peek(stack *s){if(s->p>0)return s->a[s->p-1];}
+int size(stack *s){return s->p;}
+void empty(stack *s){s->p=0;}
 
 
-struct pstack{ //persistent stack
-    struct stack a[100];
+typedef struct pstack{ //persistent stack
+    stack a[100];
     int p;
-};
-void ppush(int n, struct pstack *ps, int stnum){
+} pstack;
+void ppush(int n, pstack *ps, int stnum){
     //ps->p++; ps->a[(*ps).p]=ps->a[(*ps).p-1];
     ps->p++; ps->a[(*ps).p]=ps->a[stnum];
     push(n, &(ps->a[(*ps).p]));
 }
-int ppop(struct pstack *ps, int stnum){
+int ppop(pstack *ps, int stnum){
     //ps->p++; ps->a[(*ps).p]=ps->a[(*ps).p-1];
     ps->p++; ps->a[(*ps).p]=ps->a[stnum];
     pop(&(ps->a[(*ps).p]));
