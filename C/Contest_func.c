@@ -97,6 +97,16 @@ int ispow(int n, int t){
     else if(t==1 && n==1)out=1;
     return out;
 }
+//returns a^n
+int fpow(int a, int n){
+    int x=1, j=1;
+    if(n>0){
+        x=a;
+        while(j*2<n){x*=x; j*=2;}
+        while(j<n){x*=a; j++;}
+    }
+    return x;
+}
 //returns rat.fraction approximation for a square root; best used with long arithmetics
 void newton(unsigned long a, unsigned long x, unsigned long y, int n){
     long num=x*x+a*y*y, den=2*x*y;//n-max num of iterations
