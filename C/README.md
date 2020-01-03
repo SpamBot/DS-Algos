@@ -24,4 +24,5 @@ Converters:
 - Binary to octal
 - Decimal to any base between 2 and 36 inclusive (non/recursive)
 - Hexadecimal to binary
+- Hexadecimal to octal
 - Octal to binary
