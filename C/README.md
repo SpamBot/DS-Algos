@@ -16,6 +16,7 @@ Functions:
 - Stone sort
 - Merge sort
 - Quicksort
+- Palindrom test
 
 Converters:
 - Any base between 2 and 9 (inclusive) to decimal
