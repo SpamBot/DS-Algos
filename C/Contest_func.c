@@ -55,8 +55,8 @@ int isprime(int n){
     }
 }
 
-void eratosphen(int n){
-    int a[n], i, x=3;
+void eratosphen(unsigned long n){
+    unsigned long a[n], i, x=3;
     for(i=0; i<n; i++){if(i%2==0)a[i]=0; else a[i]=1;}
     a[1]=0; a[2]=1;
     while(x*x<n){
@@ -64,7 +64,7 @@ void eratosphen(int n){
         x++;
         while(a[x]!=1 && x<n)x++;
     }
-    for(i=0; i<n; i++)if(a[i]!=0)printf("%d ", i);
+    for(i=0; i<n; i++)if(a[i]!=0)printf("%ld ", i);
     //return &a[0];
 }
 
@@ -198,6 +198,13 @@ int bsearch(int x, int *a, int n){
     //if(a[out]!=x)out=-1; //use this to check for belonging
     return out;
 }*/
+//checks whether a passed string is a palindrome
+int ispalindr(char *s){
+    int i=0, len, out=1;
+    while(s[i]!='\0')i++; len=i;
+    for(i=0; i<len/2; i++)if(s[i]!=s[len-i-1]){out=0; break;}
+    return out==1;
+}
 
 int main() {
     int a, b;
