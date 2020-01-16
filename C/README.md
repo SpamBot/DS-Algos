@@ -1,6 +1,7 @@
 Structures:  
 - Stack
 - Persistent stack
+- String list
 
 Functions:
 - Highest common factor/nod
