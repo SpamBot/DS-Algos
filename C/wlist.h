@@ -53,3 +53,34 @@ void insertwl(wlist *l, char *s, int i){//O(wsize+2*size)
         strcpy(l->data[i].val, s);
     }
 }
+//bubble sort for sorting list by word frequency without changing the relative order
+void bsortli(wlist *li, int n){
+    int i, j;
+    for(i=1; i<n; i++){
+        for(j=n-1; j>=i; j--)if(li->data[j-1].num<li->data[j].num){
+            word w=li->data[j-1];
+            li->data[j-1]=li->data[j];
+            li->data[j]=w;
+        }
+    }
+}
+
+void mergew(word *a, int n, int m){
+    int i=0, j=n, t=0;
+    word out[m];
+    while(i<n && j<m){
+        if(a[i].num<a[j].num){out[t]=a[j]; t++; j++;}//this line causes "stability" property
+        else {out[t]=a[i]; t++; i++;}                //and this one too
+    }
+    while(i<n){out[t]=a[i]; t++; i++;}
+    while(j<m){out[t]=a[j]; t++; j++;}
+    for(i=0; i<m; i++)a[i]=out[i];
+}
+//merge sort
+void msortw(word *a, int n){
+    if(n>1){
+        msortw(a, n/2);
+        msortw(&a[n/2], (n+1)/2);
+        mergew(a, n/2, n);
+    }
+}
