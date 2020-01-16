@@ -205,9 +205,3 @@ int ispalindr(char *s){
     for(i=0; i<len/2; i++)if(s[i]!=s[len-i-1]){out=0; break;}
     return out==1;
 }
-
-int main() {
-    int a, b;
-    scanf("%d %d", &a, &b);
-    printf("%d", nod(a, b));
-}
