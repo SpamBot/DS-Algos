@@ -84,3 +84,24 @@ void msortw(word *a, int n){
         mergew(a, n/2, n);
     }
 }
+/*
+//sorting of pointer array
+void mergew(word **a, int n, int m){
+    int i=0, j=n, t=0;
+    word *out[m];
+    while(i<n && j<m){
+        if(a[i]->num<a[j]->num){out[t]=a[j]; t++; j++;}
+        else {out[t]=a[i]; t++; i++;}
+    }
+    while(i<n){out[t]=a[i]; t++; i++;}
+    while(j<m){out[t]=a[j]; t++; j++;}
+    for(i=0; i<m; i++)a[i]=out[i];
+}
+
+void msortw(word **a, int n){
+    if(n>1){
+        msortw(a, n/2);
+        msortw(&a[n/2], (n+1)/2);
+        mergew(a, n/2, n);
+    }
+}*/
