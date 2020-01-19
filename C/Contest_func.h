@@ -3,15 +3,6 @@
 #define max(a, b) ((a)>=(b)) ? (a):(b)
  //scanf("%[^\n]", s);
 
-typedef struct stack{
-    int a[100], p;
-} stack;
-void push(int n, stack *s){(*s).a[s->p]=n; s->p++;}
-int pop(stack *s){if((*s).p>0){s->p--; return s->a[s->p];}}
-int peek(stack *s){if(s->p>0)return s->a[s->p-1];}
-int size(stack *s){return s->p;}
-void empty(stack *s){s->p=0;}
-
 
 typedef struct pstack{ //persistent stack
     stack a[100];
