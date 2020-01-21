@@ -90,11 +90,14 @@ int ispow(int n, int t){
 }
 //returns a^n
 int fpow(int a, int n){
-    int x=1, j=1;
+    int x=1;
     if(n>0){
-        x=a;
-        while(j*2<n){x*=x; j*=2;}
-        while(j<n){x*=a; j++;}
+        int t=n, y, j;
+        while(t>0){
+            y=a; j=1;
+            while(j*2<t){y*=y; j*=2;}
+            x*=y; t-=j;
+        }
     }
     return x;
 }
