@@ -1,4 +1,5 @@
 Structures:  
+- Queue
 - Stack
 - Persistent stack
 - String list
