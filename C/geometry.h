@@ -21,6 +21,23 @@ double dist(point *a, point *b){//distance between 2 2D points
     return sqrt((a->x-b->x)*(a->x-b->x)+(a->y-b->y)*(a->y-b->y));
 }
 
+void pptov(point *a, point *b){//turns first point into 2D point-vector with start at b
+    a->x-=b->x; a->y-=b->y;
+}
+
+double psmult(point *a, point *b){//scalar multiplication for point-vectors
+    return a->x*b->x+a->y*b->y;//=cos(x)*|a|*|b|
+}
+
+double s3(point *a, point *b, point *c){//Area of a triangle
+    double S, sprodab, //scalar prod of ca and cb
+    lca=dist(a, c), lcb=dist(b, c);//length of ca, len of cb
+    pptov(a, c); pptov(b, c);//turning points to vectors
+    sprodab=psmult(a, b);
+    S=sqrt(lca*lca*lcb*lcb-sprodab*sprodab)/2;//S=sqrt(|a|^2*|b|^2-(a•b)^2)
+    return S;
+}
+
 typedef struct{
     int dim;
     double *val;
