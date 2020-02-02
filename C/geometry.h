@@ -28,7 +28,7 @@ void pptov(point *a, point *b){//turns first point into 2D point-vector with sta
 double psmult(point *a, point *b){//scalar multiplication for point-vectors
     return a->x*b->x+a->y*b->y;//=cos(x)*|a|*|b|
 }
-
+/*
 double s3(point *a, point *b, point *c){//Area of a triangle
     double S, sprodab, //scalar prod of ca and cb
     lca=dist(a, c), lcb=dist(b, c);//length of ca, len of cb
@@ -36,6 +36,12 @@ double s3(point *a, point *b, point *c){//Area of a triangle
     sprodab=psmult(a, b);
     S=sqrt(lca*lca*lcb*lcb-sprodab*sprodab)/2;//S=sqrt(|a|^2*|b|^2-(a•b)^2)
     return S;
+}
+*/
+double s3(point *a, point *b, point *c){//Area of a triangle #2
+    pptov(a, c); pptov(b, c);
+    double S=abs(a->x*b->y-a->y*b->x);//by vector cross-product
+    return S/2;
 }
 
 typedef struct{
