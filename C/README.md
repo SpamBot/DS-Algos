@@ -2,6 +2,7 @@ Structures:
 - Queue
 - Stack
 - Persistent stack
+- Tree
 - String list
 
 Functions:
