@@ -34,6 +34,13 @@ nodep initroot(int n){
     return root;
 }
 
+int countnodes(node *root){
+    int n=1;
+    if(root->l!=NULL)n+=countnodes(root->l);
+    if(root->r!=NULL)n+=countnodes(root->r);
+    return n;
+}
+
 void printtree(nodep root){
     printf("%d: %d\n", root->level, root->val);
     if(root->l!=NULL)printtree(root->l);
