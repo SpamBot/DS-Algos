@@ -34,6 +34,12 @@ nodep initroot(int n){
     return root;
 }
 
+nodep getmax(node *root){//returns pointer to a node with max val
+    nodep p=root;
+    while(p->r!=NULL)p=p->r;
+    return p;
+}
+
 int countnodes(node *root){
     int n=1;
     if(root->l!=NULL)n+=countnodes(root->l);
