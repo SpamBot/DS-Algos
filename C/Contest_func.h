@@ -125,7 +125,16 @@ int dsum(int n){
     while(x>0){s+=x%10; x/=10;}
     return s;
 }*/
-
+//bubble sort
+int bsort(int *a, int n){
+    int x, perm=0;
+    for(int i=0; i<n-1; i++)
+        for(int j=n-2; j>=i; j--)
+            if(a[j]>a[j+1]){
+                x=a[j+1]; a[j+1]=a[j]; a[j]=x; perm++;
+            }
+    return perm;
+}
 //stone sort
 void ssort(int *a, int n){//O(n^2)
     int x;
