@@ -201,6 +201,16 @@ int bsearch(int x, int *a, int n){
     //if(a[out]!=x)out=-1; //use this to check for belonging
     return out;
 }*/
+//binary search
+int bsearch(int x, int *a, int n){
+    int l=0, r=n, out=0;
+    while(l<r-1){
+        out=(l+r)/2;
+        if(a[out]>x)r=out;
+        else l=out;
+    }
+    return out;
+}
 //checks whether a passed string is a palindrome
 int ispalindr(char *s){
     int i=0, len, out=1;
