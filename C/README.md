@@ -3,6 +3,7 @@ Structures:
 - Stack
 - Persistent stack
 - Tree
+- Hyper (struct for long arithmetics)
 - String list
 
 Functions:
@@ -20,7 +21,9 @@ Functions:
 - Stone sort
 - Merge sort
 - Quicksort
+- Binary search
 - Palindrom test
+- Leap year test
 
 Converters:
 - Any base between 2 and 9 (inclusive) to decimal
