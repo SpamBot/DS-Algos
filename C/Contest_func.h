@@ -218,5 +218,12 @@ int ispalindr(char *s){
     for(i=0; i<len/2; i++)if(s[i]!=s[len-i-1]){out=0; break;}
     return out==1;
 }
+//reverses passed string
+void reverse(char *s, int n){
+    char c;
+    for(int i=0; i<n/2; i++){
+        c=s[i]; s[i]=s[n-1-i]; s[n-1-i]=c;
+    }
+}
 //checks whether a passed year is a leap year
 int isleap(int year){return ((year%400==0) || ((year%4==0) && (year%100!=0));}
