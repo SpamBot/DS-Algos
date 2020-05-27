@@ -23,6 +23,7 @@ Functions:
 - Quicksort
 - Binary search
 - Palindrom test
+- Reverse string (char array)
 - Leap year test
 
 Converters:
