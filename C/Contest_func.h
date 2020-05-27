@@ -218,3 +218,5 @@ int ispalindr(char *s){
     for(i=0; i<len/2; i++)if(s[i]!=s[len-i-1]){out=0; break;}
     return out==1;
 }
+//checks whether a passed year is a leap year
+int isleap(int year){return ((year%400==0) || ((year%4==0) && (year%100!=0));}
