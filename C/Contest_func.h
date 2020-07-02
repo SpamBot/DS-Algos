@@ -4,6 +4,8 @@
  //scanf("%[^\n]", s);
 
 
+typedef struct{int x, y;}pair;
+
 typedef struct pstack{ //persistent stack
     stack a[100];
     int p;
@@ -77,6 +79,7 @@ int fib(int n){
     }
     return a;
 }
+
 //is n a power of t? returns 1 if YES
 int ispow(int n, int t){
     int out=0;
@@ -88,6 +91,7 @@ int ispow(int n, int t){
     else if(t==1 && n==1)out=1;
     return out;
 }
+
 //returns a^n
 int fpow(int a, int n){
     int x=1;
@@ -101,6 +105,7 @@ int fpow(int a, int n){
     }
     return x;
 }
+
 //returns rat.fraction approximation for a square root; best used with long arithmetics
 void newton(unsigned long a, unsigned long x, unsigned long y, int n){
     long num=x*x+a*y*y, den=2*x*y;//n-max num of iterations
@@ -111,6 +116,7 @@ void newton(unsigned long a, unsigned long x, unsigned long y, int n){
     }
     else printf("\nsqrt(%lu)=%lu/%lu=%lf", a, x, y, (float)x/y);
 }
+
 //sum of digits #1
 int dsum(int n){
     char s[12];
@@ -119,12 +125,14 @@ int dsum(int n){
     for(i=0;i<=strlen(s);i++)sum+=(int)s[i]-48;
     return sum;
 }
+
 //sum of digits #2
 /*int dsum(int n){
     int s=0, x=n; //x=abs(n);
     while(x>0){s+=x%10; x/=10;}
     return s;
 }*/
+
 //bubble sort
 int bsort(int *a, int n){
     int x, perm=0;
@@ -135,6 +143,7 @@ int bsort(int *a, int n){
             }
     return perm;
 }
+
 //stone sort
 void ssort(int *a, int n){//O(n^2)
     int x;
@@ -163,6 +172,7 @@ void msort(int *a, int n){
         //int i;for(i=0;i<n;i++)printf("%d ", a[i]); printf("\n");
     }
 }
+
 //quick sort
 void qsort(int *a, int s, int e){
     if(s<e){
@@ -201,6 +211,7 @@ int bsearch(int x, int *a, int n){
     //if(a[out]!=x)out=-1; //use this to check for belonging
     return out;
 }*/
+
 //binary search
 int bsearch(int x, int *a, int n){
     int l=0, r=n, out=0;
@@ -211,6 +222,33 @@ int bsearch(int x, int *a, int n){
     }
     return out;
 }
+
+//majority element search, also known as majority vote algorhitm O(n)
+pair majority_elem(int *a, int n){
+    pair out; out.x=a[0], out.y=1;
+    int i;
+    for(i=1; i<n; i++)
+        if(a[i]==out.x)out.y++;
+        else if(out.y>0)out.y--;
+        else{out.y=1; out.x=a[i];}
+    out.y=0;
+    for(int i=0; i<n; i++)if(a[i]==out.x)out.y++;
+    return out;
+    /*
+    sketch of proof:
+    lets define operation (+) on a set of pairs (x, z) {x-real, z-integer}
+    as follows:                     1. (x, z+w) if x==y;
+                (x, z) (+) (y, w) = 2. (x, z-w) if x!=y and z>=w;
+                                    3. (y, w-z) if x!=y and z<w;
+    
+    lets also define # of elements in array of pairs as 
+                #[(x_1, z_1), (x_2, z_2), ...] = (z_1 + 1) + (z_2 + 1) +...
+    
+    Now it's sufficient to show that the majority element is invariant if we swap our array [a_1, a_2, ...] with
+    array of pairs [(a_1, 1), (a_2, 1), ...] and use (+) on its elements.
+    */
+}
+
 //checks whether a passed string is a palindrome
 int ispalindr(char *s){
     int i=0, len, out=1;
@@ -218,6 +256,7 @@ int ispalindr(char *s){
     for(i=0; i<len/2; i++)if(s[i]!=s[len-i-1]){out=0; break;}
     return out==1;
 }
+
 //reverses passed string
 void reverse(char *s, int n){
     char c;
@@ -225,5 +264,6 @@ void reverse(char *s, int n){
         c=s[i]; s[i]=s[n-1-i]; s[n-1-i]=c;
     }
 }
+
 //checks whether a passed year is a leap year
 int isleap(int year){return ((year%400==0) || ((year%4==0) && (year%100!=0));}
