@@ -22,6 +22,7 @@ Functions:
 - Merge sort
 - Quicksort
 - Binary search
+- Majority element search
 - Palindrom test
 - Reverse string (char array)
 - Leap year test
