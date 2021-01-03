@@ -70,7 +70,7 @@ void ishprime(int n){
     if(t==z) printf("YES");
     else printf("NO");
 }
-
+/*
 int fib(int n){
     int a=1, b=1, x;
     while(n>1){
@@ -78,6 +78,26 @@ int fib(int n){
         n-=1;
     }
     return a;
+}*/
+
+long fib(int n){
+    //fn fn+1 *  [0 1]  =  fn+1 fn+2
+    //           [1 1]
+    long a11=0, a12=1, a21=1, a22=1, b11, b12, b21, b22;
+    int i=1;
+    while(2*i<=n){
+        b11=a11; b12=a12; b21=a21; b22=a22;
+        a11=b11*b11+b12*b21; a12=b12*(b11+b22);
+        a21=b21*(b11+b22); a22=b21*b12+b22*b22;
+        i*=2;
+    }
+    while(i<=n){
+        b11=a11; b12=a12; b21=a21; b22=a22;
+        a11=a21; a12=b11+b12;
+        a21=a22; a22=b21+b22;
+        i++;
+    }
+    return a11;
 }
 
 //is n a power of t? returns 1 if YES
@@ -214,13 +234,13 @@ int bsearch(int x, int *a, int n){
 
 //binary search
 int bsearch(int x, int *a, int n){
-    int l=0, r=n, out=0;
+    int l=0, r=n, m;
     while(l<r-1){
-        out=(l+r)/2;
-        if(a[out]>x)r=out;
-        else l=out;
+        m=(l+r)/2;
+        if(a[m]>x)r=m;
+        else l=m;
     }
-    return out;
+    return l;
 }
 
 //majority element search, also known as majority vote algorhitm O(n)
