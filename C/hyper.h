@@ -43,14 +43,14 @@ void mult_short(hyper *a, int b){
 
 void mult_hyper(hyper *a, hyper *b){
     hyper a_tmp, tmp;
-    copy(&a_tmp, a);
-    copy(&tmp, &a_tmp);
+    copyh(&a_tmp, a);
+    copyh(&tmp, &a_tmp);
     mult_short(&tmp, b->val[0]);
-    copy(a, &tmp);
+    copyh(a, &tmp);
     for(int i=1; i<b->len; i++){
-        copy(&tmp, &a_tmp);
-        lmults(&tmp, b->val[i]);
-        add(a, &tmp, i);
+        copyh(&tmp, &a_tmp);
+        mult_short(&tmp, b->val[i]);
+        addh(a, &tmp, i);
     }
 }
 
@@ -75,7 +75,7 @@ int mod_short(hyper *a, int b){
 }
 
 void print_hyper(hyper *a){
-    printf("%d", a->val[a->len-1]);
+    printf("%ld", a->val[a->len-1]);
     for(int i=a->len-2; i>=0; i--)
-        printf("%.4d", a->val[i]);
+        printf("%.4ld", a->val[i]);
 }
