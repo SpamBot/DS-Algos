@@ -56,12 +56,22 @@ void mult_hyper(hyper *a, hyper *b){
 
 void div_short(hyper *a, int b){
     long x, rem=0, l=a->len-1;
-    for(long i=l; i>=0; i--){
+    if(b>0)for(long i=l; i>=0; i--){
         x=rem*10000+a->val[i];
         rem=x%b;
         a->val[i]=x/b;
         if(a->val[i]==0 && a->len-1==i)a->len-=1;
     }
+}
+
+int mod_short(hyper *a, int b){
+    int out=0;
+    long mult=1;
+    if(b>1)for(int i=0; i<a->len; i++){
+        out=(out+a->val[i]*mult)%b;
+        mult=(mult*10000)%b;
+    }
+    return out;
 }
 
 void print_hyper(hyper *a){
