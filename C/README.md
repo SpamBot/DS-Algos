@@ -28,6 +28,7 @@ Functions:
 - Leap year test
 
 Converters:
+- From any base [2; 36] to any base [2; 36] (with numbers up to 2^1000-1)
 - Any base between 2 and 9 (inclusive) to decimal
 - Binary to decimal
 - Binary to hexadecimal
