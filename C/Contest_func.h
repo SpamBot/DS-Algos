@@ -285,5 +285,15 @@ void reverse(char *s, int n){
     }
 }
 
+//counts prefix function for string s and stores it in "pref" array
+void prefix(char *s, long *pref, long len){
+    long j;
+    pref[0]=0;
+    for(long i=1; i<len; i++){
+        j=pref[i-1];
+        while(j>0 && s[i]!=s[j])j=pref[j-1];
+        pref[i]=j+(s[i]==s[j]);
+    }
+
 //checks whether a passed year is a leap year
 int isleap(int year){return ((year%400==0) || ((year%4==0) && (year%100!=0));}
