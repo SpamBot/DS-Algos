@@ -25,6 +25,7 @@ Functions:
 - Majority element search
 - Palindrom test
 - Reverse string (char array)
+- Prefix function
 - Leap year test
 
 Converters:
