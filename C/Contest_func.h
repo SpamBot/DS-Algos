@@ -153,6 +153,19 @@ int dsum(int n){
     return s;
 }*/
 
+//subfactorial
+long SF(int n){
+    //By inclusion/exclusion: n!-n!+C(n, 2)*(n-2)!-C(n, 3)*(n-3)!+... = n!(1/2!-1/3!+1/4!-...)
+    long num=1, den=1, out=0;
+    for(int i=2; i<=n; i++)num*=i;
+    for(int i=2; i<=n; i++){
+        den*=i;
+        if((i & 1)==0)out+=num/den;
+        else out-=num/den;
+    }
+    return out;
+}
+
 //bubble sort
 int bsort(int *a, int n){
     int x, perm=0;
