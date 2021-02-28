@@ -17,6 +17,9 @@ Functions:
 - Exponentiation of natural numbers
 - Square root approximation via Newton method
 - Sum of digits
+- Factorial
+- Subfactorial
+- Combinations
 - Bubble sort
 - Stone sort
 - Merge sort
