@@ -153,6 +153,13 @@ int dsum(int n){
     return s;
 }*/
 
+//factorial
+long F(int n){
+    int out=1;
+    for(int i=2; i<=n; i++)out*=i;
+    return out;
+}
+
 //subfactorial
 long SF(int n){
     //By inclusion/exclusion: n!-n!+C(n, 2)*(n-2)!-C(n, 3)*(n-3)!+... = n!(1/2!-1/3!+1/4!-...)
@@ -163,6 +170,14 @@ long SF(int n){
         if((i & 1)==0)out+=num/den;
         else out-=num/den;
     }
+    return out;
+}
+
+//Combinations from n per k
+long C(int n, int k){
+    long out=1;
+    for(int i=n; i>(n-k); i--)out*=i;
+    for(int i=2; i<=k; i++)out/=i;
     return out;
 }
 
