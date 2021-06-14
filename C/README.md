@@ -1,7 +1,6 @@
 Structures:  
 - Queue
 - Stack
-- Persistent stack
 - Tree
 - Hyper (struct for long arithmetics)
 - String list
@@ -13,7 +12,6 @@ Functions:
 - Eratosphen sieve
 - Hyper-primality test
 - n-th Fibonacci num
-- Power test
 - Exponentiation of natural numbers
 - Square root approximation via Newton method
 - Sum of digits
