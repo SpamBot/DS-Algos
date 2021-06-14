@@ -6,20 +6,6 @@
 
 typedef struct{int x, y;}pair;
 
-typedef struct pstack{ //persistent stack
-    stack a[100];
-    int p;
-} pstack;
-void ppush(int n, pstack *ps, int stnum){
-    //ps->p++; ps->a[(*ps).p]=ps->a[(*ps).p-1];
-    ps->p++; ps->a[(*ps).p]=ps->a[stnum];
-    push(n, &(ps->a[(*ps).p]));
-}
-int ppop(pstack *ps, int stnum){
-    //ps->p++; ps->a[(*ps).p]=ps->a[(*ps).p-1];
-    ps->p++; ps->a[(*ps).p]=ps->a[stnum];
-    pop(&(ps->a[(*ps).p]));
-}
 
 int nod(int a, int b){
     while(a!=0 && b!=0){
@@ -100,30 +86,22 @@ long fib(int n){
     return a11;
 }
 
-//is n a power of t? returns 1 if YES
-int ispow(int n, int t){
-    int out=0;
-    if(t>1){
-        if(n==1)out=1;
-        else if(n==0)out=0;
-        else if(n%t==0)out=ispow(n/t, t);
-    }
-    else if(t==1 && n==1)out=1;
-    return out;
-}
-
 //returns a^n
-int fpow(int a, int n){
-    int x=1;
-    if(n>0){
-        int t=n, y, j;
-        while(t>0){
-            y=a; j=1;
-            while(j*2<t){y*=y; j*=2;}
-            x*=y; t-=j;
+long fpow(long a, long n, long mod){
+    long out=a, p=1;
+    if(n==0)return 1;
+    else if(n<0)throw 1;
+    else{
+        if(mod>1){
+            while(2*p<=n){out=(out*out)%mod; p*=2;}
+            if(p<n)out=(out*fpow(a, n-p, mod))%mod;
         }
+        else{
+            while(2*p<=n){out*=out; p*=2;}
+            if(p<n)out*=fpow(a, n-p, mod);
+        }
+        return out;
     }
-    return x;
 }
 
 //returns rat.fraction approximation for a square root; best used with long arithmetics
@@ -173,11 +151,22 @@ long SF(int n){
     return out;
 }
 
-//Combinations from n per k
-long C(int n, int k){
-    long out=1;
-    for(int i=n; i>(n-k); i--)out*=i;
-    for(int i=2; i<=k; i++)out/=i;
+//Combinations from n per k modulo mod
+long C(long n, long k, long mod){
+    long out=1, den=1;
+    if(mod>1){//works only when mod is prime
+     /*
+    PROOF: n!/k!(n-k)! ~ x mod p  ->  n! ~ k!(n-k)!*x mod p  ->  x ~ n!(k!(n-k)!)^{p-2} mod p, by Fermat LT
+    */
+        for(long i=n; i>n-k; i--)out=(out*i)%mod;
+        for(long i=2; i<=k; i++)den=(den*i)%mod;
+        out=(out*fpow(den, mod-2, mod))%mod;
+    }
+    else{
+        for(long i=n; i>n-k; i--)out*=i;
+        for(long i=2; i<=n-k; i++)den*=i;
+        out/=den;
+    }
     return out;
 }
 
@@ -235,30 +224,7 @@ void qsort(int *a, int s, int e){
         qsort(a, s, r);
         qsort(a, l, e);
     }
-}/*
-//binary check
-int bcheck(int x, int *a, int n){
-    int out=-1;
-    if(n>0){
-        if(x<a[n/2])out=bcheck(x, a, n/2);
-        else if(x>a[n/2])out=bcheck(x, &a[(n+1)/2], n/2);
-        else out=n/2;
-    }
-    return out;
-}*/
-/*
-//approximate binary search
-int bsearch(int x, int *a, int n){
-    int out, l=0, r=n;
-    while(l<r){
-        out=(l+r)/2; //printf("out=%d, l=%d, r=%d\n", out, l, r);
-        if(a[out]<x)l=out;
-        else if (a[out]>x)r=out;
-        if(a[out]==x || out==(l+r)/2) break;
-    } //printf("----------\n");
-    //if(a[out]!=x)out=-1; //use this to check for belonging
-    return out;
-}*/
+}
 
 //binary search
 int bsearch(int x, int *a, int n){
