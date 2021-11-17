@@ -1,8 +1,10 @@
 Structures:  
+- Binary indexed tree (Fenwick tree)
+- Disjoint set union (DSU)
+- Hyper (struct for long arithmetics)
 - Queue
 - Stack
 - Tree
-- Hyper (struct for long arithmetics)
 - String list
 
 Functions:
