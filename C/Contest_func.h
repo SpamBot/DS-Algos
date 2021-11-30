@@ -6,13 +6,18 @@
 
 typedef struct{int x, y;}pair;
 
-
+/*
 int nod(int a, int b){
     while(a!=0 && b!=0){
         if(a>b)a%=b;
         else b%=a;
     }
     return max(a, b);
+}
+*/
+long nod(long x, long y){
+    while(x!=0 && y!=0)(x>y) ? x%=y : y%=x;
+    return (y==0) ? x:y;
 }
 
 int nok(int a, int b){
