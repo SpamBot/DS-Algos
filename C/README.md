@@ -3,6 +3,7 @@ Structures:
 - Disjoint set union (DSU)
 - Hyper (struct for long arithmetics)
 - Queue
+- Segment Tree (Sum)
 - Stack
 - Tree
 - String list
