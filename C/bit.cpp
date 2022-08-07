@@ -16,4 +16,4 @@ typedef struct{//aka binary indexed tree
             k=k | (k+1);
         }
     }
-}fenwick;
+}BiT;
