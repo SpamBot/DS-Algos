@@ -91,22 +91,13 @@ long fib(int n){
     return a11;
 }
 
-//returns a^n
-long fpow(long a, long n, long mod){
-    long out=a, p=1;
+//returns a^n % mod
+long fpow(int a, int n, int mod){
+    int x=a, p=1;
     if(n==0)return 1;
-    else if(n<0)throw 1;
-    else{
-        if(mod>1){
-            while(2*p<=n){out=(out*out)%mod; p*=2;}
-            if(p<n)out=(out*fpow(a, n-p, mod))%mod;
-        }
-        else{
-            while(2*p<=n){out*=out; p*=2;}
-            if(p<n)out*=fpow(a, n-p, mod);
-        }
-        return out;
-    }
+    if(n<0)throw 1;
+    for(; p <= (n>>1); p<<=1)x=(x*x)%mod;
+    return (x*fpow(a, n-p, mod))%mod;
 }
 
 //returns rat.fraction approximation for a square root; best used with long arithmetics
