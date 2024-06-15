@@ -39,7 +39,7 @@ int isprime(int n){
     }
 }
 
-void eratosphen(unsigned long n){
+/*void eratosphen(unsigned long n){
     unsigned long a[n], i, x=3;
     for(i=0; i<n; i++){if(i%2==0)a[i]=0; else a[i]=1;}
     a[1]=0; a[2]=1;
@@ -50,6 +50,17 @@ void eratosphen(unsigned long n){
     }
     for(i=0; i<n; i++)if(a[i]!=0)printf("%ld ", i);
     //return &a[0];
+}*/
+
+void sieve(int n, int *a){
+    int t=0;
+    bool primes[n+1];
+    for(int i=0; i<=n; i++)primes[i]=1;
+    primes[0]=0; primes[1]=0;
+    for(int i=2; i<=n; i++)if(primes[i]){
+        a[t]=i; t++;
+        for(int j=i*i; j<=n; j+=i)primes[j]=0;
+    }
 }
 
 void ishprime(int n){
